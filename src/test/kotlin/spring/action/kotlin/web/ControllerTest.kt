@@ -16,12 +16,12 @@ class ControllerTest(
     var mockMvc: MockMvc){
 
     @Test
-    fun 홈_접근(){
+    fun 홈_페이지(){
         mockMvc.perform(get("/"))
             .andExpect(status().isOk())
             .andExpect(view().name("home"))
             .andExpect(content().string(
-                containsString("HELLO")
+                containsString("Welcome to...")
             ))
     }
 }

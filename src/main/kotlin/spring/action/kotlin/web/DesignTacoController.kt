@@ -4,6 +4,8 @@ import groovy.util.logging.Slf4j
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
 import spring.action.kotlin.entity.Ingredient
 import spring.action.kotlin.entity.Ingredient.Type
 import spring.action.kotlin.entity.Ingredient.Type.WRAP
@@ -12,7 +14,8 @@ import spring.action.kotlin.entity.Taco
 
 
 @Slf4j
-@Controller("/design")
+@Controller
+@RequestMapping("/design")
 class DesignTacoController {
 
     @GetMapping
@@ -22,14 +25,15 @@ class DesignTacoController {
         ingredients.add(Ingredient("COTO", "CORN TORTILLA", WRAP))
         ingredients.add(Ingredient("GRBF", "GROUND BEEF", WRAP))
 
-        // 투표 부탁드림
-        values().forEach { value ->
-            model.addAttribute(value.toString().lowercase(), filterByType(ingredients, value))
-        }
-
+        values().forEach { value -> model.addAttribute(value.toString().lowercase(), filterByType(ingredients, value)) }
         model.addAttribute("taco", Taco())
 
         return "design"
+    }
+
+    @PostMapping
+    fun processDesign(design : Taco) : String{
+        return "redirect:/orders/current"
     }
 
     private fun filterByType(

@@ -1,6 +1,6 @@
 package spring.action.kotlin.entity
 
-class Taco(
-    val name: String,
-    var ingredients: List<String>) {
+class Taco() {
+    var name: String? = null
+    var ingredients: List<String>? = null
 }

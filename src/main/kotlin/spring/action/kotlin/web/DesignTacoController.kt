@@ -3,6 +3,7 @@ package spring.action.kotlin.web
 import groovy.util.logging.Slf4j
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.validation.Errors
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -11,6 +12,7 @@ import spring.action.kotlin.entity.Ingredient.Type
 import spring.action.kotlin.entity.Ingredient.Type.WRAP
 import spring.action.kotlin.entity.Ingredient.Type.values
 import spring.action.kotlin.entity.Taco
+import javax.validation.Valid
 
 
 @Slf4j
@@ -32,7 +34,10 @@ class DesignTacoController {
     }
 
     @PostMapping
-    fun processDesign(design : Taco) : String{
+    fun processDesign(design :@Valid Taco, errors: Errors) : String{
+        if(errors.hasErrors()){
+            return "design"
+        }
         return "redirect:/orders/current"
     }
 

@@ -28,6 +28,7 @@ class OrderController {
         if(errors.hasErrors()){
             return "orderForm"
         }
+
         log.info(order.toString())
         return "redirect:/"
     }

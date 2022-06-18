@@ -15,7 +15,6 @@ import spring.action.kotlin.entity.Taco
 import javax.validation.Valid
 
 
-@Slf4j
 @Controller
 @RequestMapping("/design")
 class DesignTacoController {
@@ -38,6 +37,8 @@ class DesignTacoController {
         if(errors.hasErrors()){
             return "design"
         }
+        return errors.hasErrors().takeIf { it } ?:
+
         return "redirect:/orders/current"
     }
 

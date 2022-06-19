@@ -11,5 +11,4 @@ class Taco(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long? = null,
     val name: String? = null,
-    val ingredients: List<String>? = ArrayList()
 )

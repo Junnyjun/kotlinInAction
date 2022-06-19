@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import spring.action.kotlin.entity.Ingredient
-import spring.action.kotlin.entity.Ingredient.Type.WRAP
 import spring.action.kotlin.entity.Taco
+import spring.action.kotlin.entity.Type
+import spring.action.kotlin.entity.Type.WRAP
 
 
 @Controller
@@ -23,7 +24,7 @@ class DesignTacoController {
             Ingredient("GRBF", "GROUND BEEF", WRAP)
         )
 
-        for (value in Ingredient.Type.values()) {
+        for (value in Type.values()) {
             model
                 .addAttribute(value.toString().lowercase(), ingredients.filter { it.type == value })
                 .addAttribute("taco", Taco())

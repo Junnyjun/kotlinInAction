@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import spring.action.kotlin.entity.Order
-import javax.validation.Valid
 
 
 @Controller
@@ -17,21 +16,22 @@ class OrderController {
     private val log = LoggerFactory.getLogger(OrderController::class.java)
 
     @GetMapping("/current")
-    fun orderForm(model : Model) : String{
-        model.addAttribute("order", Order())
-        return "orderForm"
+    fun orderForm(model: Model): String {
+        model
+            .addAttribute("order", Order())
+            .also { log.info("/get 요청 실행") }
+            .let { return "orderForm" }
+
     }
 
     @PostMapping
-    fun processOrder(order:@Valid Order,
-                     errors: Errors) : String{
-        if(errors.hasErrors()){
-            return "orderForm"
-        }
-
-        log.info(order.toString())
-        return "redirect:/"
+    fun processOrder(
+        order: Order,
+        errors: Errors
+    ): String {
+        return errors.takeIf { it.hasErrors() }
+            ?.let { "orderForm" }
+            ?: "redirect:/"
     }
-
 
 }

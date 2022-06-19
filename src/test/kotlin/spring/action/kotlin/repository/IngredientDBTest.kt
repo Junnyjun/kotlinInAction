@@ -12,16 +12,16 @@ import org.springframework.transaction.annotation.Transactional
 import spring.action.kotlin.db.IngredientRepository
 import spring.action.kotlin.entity.Ingredient
 import spring.action.kotlin.entity.Type.WRAP
-import java.util.*
 import javax.persistence.EntityManager
 
 
 @DataJpaTest
-@Transactional
 @AutoConfigureTestDatabase(replace = NONE)
 class IngredientDBTest{
     @Autowired
     lateinit var ingredientRepository : IngredientRepository;
+    @Autowired
+    lateinit var  entityManager: EntityManager
 
     @BeforeEach
     fun `setUp`(){
@@ -43,9 +43,17 @@ class IngredientDBTest{
     }
     @Test
     fun `update test`(){
-        val save = ingredientRepository.findByIdOrNull(1L) ?: throw RuntimeException("NOT NULL")
+        updateName()
+        val result = ingredientRepository.findByIdOrNull(1L)
+            ?: throw RuntimeException("NOT NULL")
+        assertEquals(result.name, "new")
+    }
 
-        save.name = "new"
+    @Transactional
+    fun updateName() {
+        val result = ingredientRepository.findByIdOrNull(1L)
+            ?: throw RuntimeException("NOT NULL")
+        result.name = "new"
     }
 }
 

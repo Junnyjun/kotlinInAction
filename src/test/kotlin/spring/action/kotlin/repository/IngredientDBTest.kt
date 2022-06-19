@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.transaction.annotation.Transactional
 import spring.action.kotlin.db.IngredientRepository
 import spring.action.kotlin.entity.Ingredient
@@ -42,8 +43,8 @@ class IngredientDBTest{
     }
     @Test
     fun `update test`(){
-        val save = ingredientRepository.findById(1L)
-            .orElseThrow{ RuntimeException("NOT NULL")}
+        val save = ingredientRepository.findByIdOrNull(1L) ?: throw RuntimeException("NOT NULL")
+
         save.name = "new"
     }
 }

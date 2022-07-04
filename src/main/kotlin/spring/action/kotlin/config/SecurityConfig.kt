@@ -29,6 +29,12 @@ class SecurityConfig(){
             .defaultSuccessUrl("/design",true)
             .usernameParameter("user")
             .passwordParameter("pwd")
+            .and()
+            .logout()
+            .logoutSuccessUrl("/")
+            .and()
+            .csrf()
+            .disable()
         return http.build()
 
     }

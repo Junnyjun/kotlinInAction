@@ -1,6 +1,8 @@
 package spring.action.kotlin.entity
 
 import org.jetbrains.annotations.NotNull
+import spring.action.kotlin.db.user.User
+import javax.persistence.ManyToOne
 
 class Order (){
     @field:NotNull("필수 입력값")

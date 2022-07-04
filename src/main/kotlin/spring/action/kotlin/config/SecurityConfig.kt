@@ -26,7 +26,11 @@ class SecurityConfig(){
             .and()
             .formLogin()
             .loginPage("/login")
+            .defaultSuccessUrl("/design",true)
+            .usernameParameter("user")
+            .passwordParameter("pwd")
         return http.build()
+
     }
 
     @Bean

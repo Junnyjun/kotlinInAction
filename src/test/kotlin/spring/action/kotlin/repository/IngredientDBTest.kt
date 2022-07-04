@@ -9,9 +9,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.transaction.annotation.Transactional
-import spring.action.kotlin.db.IngredientRepository
-import spring.action.kotlin.entity.Ingredient
-import spring.action.kotlin.entity.Type.WRAP
+import spring.action.kotlin.db.ingredient.IngredientRepository
+import spring.action.kotlin.db.ingredient.Ingredient
+import spring.action.kotlin.db.ingredient.Type.WRAP
 import javax.persistence.EntityManager
 
 

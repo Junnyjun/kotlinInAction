@@ -1,4 +1,4 @@
-package spring.action.kotlin.entity
+package spring.action.kotlin.db.ingredient
 
 import javax.persistence.Entity
 import javax.persistence.EnumType.STRING

@@ -5,3 +5,4 @@ import org.springframework.stereotype.Repository
 
 @Repository
 sealed interface IngredientRepository : JpaRepository<Ingredient, Long>
+

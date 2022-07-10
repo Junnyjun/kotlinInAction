@@ -11,7 +11,7 @@ class User(
     val passWord:String,
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: String? = null
+    var id: Long? = null
 ): UserDetails{
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {

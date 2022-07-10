@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
 class SecurityConfig(){
     @Bean
     protected fun filterChain(http : HttpSecurity): DefaultSecurityFilterChain? {
-        http
+        return http
             .authorizeRequests()
             .antMatchers("/design","orders").hasRole("USER")
             .antMatchers("/","/**").permitAll()
@@ -26,6 +26,7 @@ class SecurityConfig(){
             .and()
             .formLogin()
             .loginPage("/login")
+            .loginProcessingUrl("/login/junny")
             .defaultSuccessUrl("/design",true)
             .usernameParameter("user")
             .passwordParameter("pwd")
@@ -35,17 +36,11 @@ class SecurityConfig(){
             .and()
             .csrf()
             .disable()
-        return http.build()
-
+            .build()
     }
 
     @Bean
-    fun passwordEncoder(): PasswordEncoder? {
+    fun passwordEncoder(): PasswordEncoder {
         return createDelegatingPasswordEncoder()
-    }
-
-    fun addViewController(registry: ViewControllerRegistry){
-        registry.addViewController("/").setViewName("home")
-        registry.addViewController("/login")
     }
 }

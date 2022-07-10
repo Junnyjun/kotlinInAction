@@ -33,7 +33,7 @@ dependencies {
 
     implementation ("org.springframework.boot:spring-boot-starter-security")
     implementation ("org.springframework.security:spring-security-test")
-    implementation ("org.thymeleaf.extras:thymeleaf-extras-springsecurity5")
+    implementation ("org.thymeleaf.extras:thymeleaf-extras-spring-security5")
 
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation ("org.springframework.boot:spring-boot-starter-data-jpa")

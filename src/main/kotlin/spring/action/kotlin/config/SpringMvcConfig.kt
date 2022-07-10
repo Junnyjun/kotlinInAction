@@ -7,10 +7,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
 @EnableWebMvc
-class SpringMvcConfig: WebMvcConfigurer{
+class SpringMvcConfig: WebMvcConfigurer {
 
     override fun addViewControllers(registry: ViewControllerRegistry) {
         registry.addViewController("/").setViewName("home")
         registry.addViewController("/login")
     }
+
 }

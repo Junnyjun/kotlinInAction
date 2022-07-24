@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import spring.action.kotlin.db.ingredient.Ingredient
-import spring.action.kotlin.entity.Taco
 import spring.action.kotlin.db.ingredient.Type
 import spring.action.kotlin.db.ingredient.Type.WRAP
+import spring.action.kotlin.entity.Taco
 
 
 @Controller
 @RequestMapping("/design")
-class DesignTacoController {
+class V1DesignTacoController {
 
     @GetMapping
     fun showDesignFrom(model: Model): String {

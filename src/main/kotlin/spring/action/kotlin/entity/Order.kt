@@ -4,19 +4,15 @@ import org.jetbrains.annotations.NotNull
 import spring.action.kotlin.db.user.User
 import javax.persistence.ManyToOne
 
-class Order (){
-    @field:NotNull("필수 입력값")
-    val deliveryName: String? = null
-    @field:NotNull("필수 입력값")
-    val deliveryStreet: String? = null
-    @field:NotNull("필수 입력값")
-    val deliveryCity: String? = null
-    @field:NotNull("필수 입력값")
-    val deliveryState: String? = null
-    @field:NotNull("필수 입력값")
-    val deliveryZip: String? = null
-    val ccNumber: String? = null
-    @field:NotNull("필수 입력값")
-    val ccExpiration: String? = null
-    val ccCVV: String? = null
-}
+class Order(
+    var deliveryName: String? = null,
+    val deliveryStreet: String? = null,
+    val deliveryCity: String? = null,
+    var deliveryState: String? = null,
+    val deliveryZip: String? = null,
+    val ccNumber: String? = null,
+    val ccExpiration: String? = null,
+    val ccCVV: String? = null,
+    @ManyToOne
+    var user: User? = null
+)

@@ -55,6 +55,12 @@ class V2DesignTacoController (
         order.deliveryState?.let {entity.deliveryState= it }
     }
 
+    @GetMapping
+    fun recentTaco(pageable: PageRequest){
+        val content = tacoRepo.findAll(pageable)
+
+        resources = Resources.wrap(content)
+    }
     @PostMapping
     @ResponseStatus(CREATED)
     fun save(@RequestBody taco: Taco): Taco {

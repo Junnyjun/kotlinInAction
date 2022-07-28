@@ -32,6 +32,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     implementation ("org.springframework.boot:spring-boot-starter-security")
+    implementation ("org.springframework.boot:spring-boot-starter-hateoas")
     implementation ("org.springframework.security:spring-security-test")
     implementation ("org.thymeleaf.extras:thymeleaf-extras-spring-security5")
 
@@ -44,6 +45,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("ch.qos.logback:logback-classic")
+
 
 
     compileOnly("org.projectlombok:lombok")

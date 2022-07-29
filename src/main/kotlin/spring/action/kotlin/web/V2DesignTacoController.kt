@@ -2,8 +2,6 @@ package spring.action.kotlin.web
 
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.hateoas.CollectionModel
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.NO_CONTENT
@@ -18,17 +16,17 @@ import spring.action.kotlin.entity.TacoRepository
 
 
 @RestController
-@RequestMapping(path = ["/design"], produces = ["application/json"])
+@RequestMapping( "/v2/design", produces = ["application/json"])
 @CrossOrigin("*")
 class V2DesignTacoController (
     private val userRepo: UserRepository,
     private val tacoRepo: TacoRepository,
     private val orderRepo: OrderRepository
 ){
-    @GetMapping
+    @GetMapping("/recent")
     fun recentTacos(): Iterable<Taco>{
         val page = PageRequest.of(0,10);
-        return tacoRepo.findAll(page).content
+        return tacoRepo.findAll()
     }
 
     @GetMapping("/{id}")
@@ -59,14 +57,6 @@ class V2DesignTacoController (
 
     @GetMapping
     fun recentTaco(pageable: PageRequest){
-        val content = tacoRepo.findAll(pageable)
-
-        val resources = CollectionModel.wrap(content)
-        resources.add(
-            WebMvcLinkBuilder.linkTo(this.javaClass)
-                .slash("recent")
-                .withRel("recents")
-        )
     }
     @PostMapping
     @ResponseStatus(CREATED)

@@ -13,7 +13,7 @@ import spring.action.kotlin.entity.Taco
 
 
 @Controller
-@RequestMapping("/design")
+@RequestMapping("/v1/design")
 class V1DesignTacoController {
 
     @GetMapping

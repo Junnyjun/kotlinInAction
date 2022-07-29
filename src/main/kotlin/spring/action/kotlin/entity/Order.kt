@@ -1,9 +1,10 @@
 package spring.action.kotlin.entity
 
-import org.jetbrains.annotations.NotNull
-import spring.action.kotlin.db.user.User
-import javax.persistence.ManyToOne
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.Id
 
+@Entity
 class Order(
     var deliveryName: String? = null,
     val deliveryStreet: String? = null,
@@ -13,6 +14,8 @@ class Order(
     val ccNumber: String? = null,
     val ccExpiration: String? = null,
     val ccCVV: String? = null,
-    @ManyToOne
-    var user: User? = null
-)
+    @Id
+    @Column(name = "id", nullable = false)
+    var id: Long? = null
+) {
+}

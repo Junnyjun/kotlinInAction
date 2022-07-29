@@ -31,14 +31,20 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
-    implementation ("org.springframework.boot:spring-boot-starter-security")
+//    implementation ("org.springframework.boot:spring-boot-starter-security")
     implementation ("org.springframework.boot:spring-boot-starter-hateoas")
+    implementation ("org.springframework.boot:spring-boot-starter-data-rest")
+
+    implementation ("org.postgresql:postgresql")
+    runtimeOnly ("org.postgresql:postgresql")
+
+//    implementation("com.h2database:h2")
+
     implementation ("org.springframework.security:spring-security-test")
-    implementation ("org.thymeleaf.extras:thymeleaf-extras-spring-security5")
+//    implementation ("org.thymeleaf.extras:thymeleaf-extras-spring-security5")
 
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("com.h2database:h2")
 
     implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

@@ -1,19 +1,21 @@
 server:
   port: 8888
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2
+  data:
+    rest:
+      base-path: /api
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/hello
+    username: junny
+    password: 1234
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: POSTGRESQL
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      dialect : PostgreSQL14Dialect
+      ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false

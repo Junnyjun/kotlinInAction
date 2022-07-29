@@ -12,8 +12,8 @@ import spring.action.kotlin.web.model.RegistrationForm
 @Controller
 @RequestMapping("/register")
 class RegisterController(
-    private val userRepo: UserRepository,
-    private val passwordEncoder: PasswordEncoder
+    private val userRepo: UserRepository
+//    private val passwordEncoder: PasswordEncoder
     ) {
 
     @GetMapping
@@ -23,7 +23,7 @@ class RegisterController(
 
     @PostMapping
     fun registerProcessing(form : RegistrationForm): String {
-        userRepo.save(form.toUser(passwordEncoder))
+        userRepo.save(form.toUser())
         return "redirecdt:/login"
     }
 }

@@ -60,6 +60,7 @@ class V2DesignTacoController (
         val content = tacoRepo.findAll(pageable)
 
         resources = Resources.wrap(content)
+        ControllerLinkBuilder.linkTo
     }
     @PostMapping
     @ResponseStatus(CREATED)

@@ -2,6 +2,8 @@ package spring.action.kotlin.web
 
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.hateoas.CollectionModel
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.CREATED
 import org.springframework.http.HttpStatus.NO_CONTENT
@@ -59,8 +61,12 @@ class V2DesignTacoController (
     fun recentTaco(pageable: PageRequest){
         val content = tacoRepo.findAll(pageable)
 
-        resources = Resources.wrap(content)
-        ControllerLinkBuilder.linkTo
+        val resources = CollectionModel.wrap(content)
+        resources.add(
+            WebMvcLinkBuilder.linkTo(this.javaClass)
+                .slash("recent")
+                .withRel("recents")
+        )
     }
     @PostMapping
     @ResponseStatus(CREATED)
